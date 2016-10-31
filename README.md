@@ -365,3 +365,12 @@ sudo vim /etc/fstab
 * [elinux.org ArchLinux Install Guide](http://elinux.org/ArchLinux_Install_Guide)
 * [Arch Linux Wiki: SSH Server](https://wiki.archlinux.de/title/SSH)
 * [Michael Paquier: Raspberry PI with basic setup](http://michael.otacoo.com/manuals/raspberry-pi/)
+
+#Installation operating system using windows
+Simple steps for installing OS in raspberry using windows visit :   
+https://www.raspberrypi.org/wp-content/uploads/2012/12/quick-start-guide-v1.1.pdf
+
+#Installation operating system using mac OS X
+For installation raspberry OS using mac OS follow thsi link:       
+https://www.raspberrypi.org/documentation/installation/installing-images/mac.md
+
