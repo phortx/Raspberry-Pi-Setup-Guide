@@ -166,7 +166,7 @@ After the Pi is booted again, connect via SSH (if you don't have attached a keyb
 ### 3.3. NTP
 
 ```bash
-pacman -S ntp
+pacman -S ntp fake-hwclock
 systemctl enable ntpd.service
 systemctl start ntpd.service
 ```
