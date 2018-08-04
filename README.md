@@ -203,7 +203,7 @@ visudo
 * Add a new user (replace `yourUserName` with your username!)
 
 ```bash
-useradd -d /home/yourUserName -m -G wheel,rvm -s /bin/bash yourUserName
+useradd -d /home/yourUserName -m -G wheel -s /bin/bash yourUserName
 ```
 
 * Set a password for your new user:
