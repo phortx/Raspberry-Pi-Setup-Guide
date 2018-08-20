@@ -154,7 +154,7 @@ sed -i 's/#Color/Color/' /etc/pacman.conf # Add color to pacman
 pacman -Sy pacman
 pacman-key --init
 pacman -S archlinux-keyring
-pacman-key --populate archlinux
+pacman-key --populate archlinuxarm
 pacman -Syu --ignore filesystem
 pacman -S filesystem --force
 reboot
