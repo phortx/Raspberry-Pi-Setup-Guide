@@ -48,6 +48,14 @@ There are 2 major versions of Raspberry Pi now. You may find the downloads on
 [www.archlinuxarm.org](http://www.archlinuxarm.org) for the latest version of Arch Linux for Raspberry Pi both 1 and 2.
 
 
+**For Raspberry Pi 3**
+```bash
+wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-3-latest.tar.gz
+sudo tar -xpf ArchLinuxARM-rpi-3-latest.tar.gz -C root
+sync
+```
+
+
 **For Raspberry Pi 2**
 
 ```bash
