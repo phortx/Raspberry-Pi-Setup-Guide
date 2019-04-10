@@ -48,6 +48,14 @@ There are 2 major versions of Raspberry Pi now. You may find the downloads on
 [www.archlinuxarm.org](http://www.archlinuxarm.org) for the latest version of Arch Linux for Raspberry Pi both 1 and 2.
 
 
+**For Raspberry Pi 3**
+```bash
+wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-3-latest.tar.gz
+sudo tar -xpf ArchLinuxARM-rpi-3-latest.tar.gz -C root
+sync
+```
+
+
 **For Raspberry Pi 2**
 
 ```bash
@@ -91,25 +99,19 @@ su
 The password is `root`.
 
 
-### 2.1. German keyboard layout and timezone
+### 2.1. German keyboard layout
 
 Of course just if you want to have a german keyboard layout. You may skip this step or use another layout.
 
 ```bash
 loadkeys de
-echo LANG=de_DE.UTF-8 > /etc/locale.conf
+echo LANG=en_US.UTF-8 > /etc/locale.conf
 echo KEYMAP=de-latin1-nodeadkeys > /etc/vconsole.conf
-rm /etc/localtime
-ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
-sed -i "s/en_US.UTF-8/#en_US.UTF-8/" /etc/locale.conf
+sed -i "s/#en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen
+locale-gen
 ```
 
-```bash
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-locale-gen en_US.UTF-8
-```
+Logout and back in for the settings to take effect.
 
 
 ### 2.2. Setup swapfile
@@ -134,7 +136,7 @@ echo 'vm.swappiness=1' > /etc/sysctl.d/99-sysctl.conf
 ```bash
 timedatectl set-local-rtc 0
 
-nano /etc/timezone
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 ```
 
 * Set to "Europe/Berlin"
@@ -151,12 +153,9 @@ sed -i 's/#Color/Color/' /etc/pacman.conf # Add color to pacman
 ### 3.2. System update
 
 ```bash
-pacman -Sy pacman
 pacman-key --init
-pacman -S archlinux-keyring
 pacman-key --populate archlinuxarm
-pacman -Syu --ignore filesystem
-pacman -S filesystem --force
+pacman -Syu
 reboot
 ```
 
