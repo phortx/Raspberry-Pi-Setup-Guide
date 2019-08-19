@@ -1,21 +1,21 @@
 # Raspberry Pi Setup Guide
 
 A really opionionated guide how to setup every version of a Raspberry Pi with Arch Linux including WiringPi, NTP, Wi-Fi, SSH,
-Ruby, ZSH and more.
+asdf, Ruby, ZSH and more.
 
 Take a look into the wiki for more interesing stuff like finding out your Raspberry Pi version.
 
 
 ## Some words regarding the hardware
 
-I recommend you to get a speed class 10 SD Card with more than 4 GB capacity for optimal performance.
+I recommend you to get a speed class 10 SD Card with more than 16 GB capacity for optimal performance.
 
 Additionally you should buy a small heatsink. [Something like that](http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=raspberry%20pi%20heatsink&sprefix=raspberry+pi+he%2Caps&rh=i%3Aaps%2Ck%3Araspberry%20pi%20heatsink) and attach it to the CPU of the Raspberry Pi.
 
 
 ## What you'll need
 
-- A linux machine with a working SD card slot
+- A linux or mac machine with a working SD card slot
 - `bsdtar` or `tar`, `fdisk`
 
 
