@@ -16,7 +16,8 @@ Additionally you should buy a small heatsink. [Something like that](http://www.a
 ## What you'll need
 
 - A linux or mac machine with a working SD card slot
-- `bsdtar` or `tar`, `fdisk`
+- Linux: `tar`, `fdisk`
+- MacOS: `gptfdisk` brew package
 
 
 ## 1. Setup the SD card
@@ -26,9 +27,9 @@ Replace `/dev/XXX` with the SD Card device. Make sure that the device is the SD 
 you'll destroy your linux installation! You can see which device you'll have to use by running `sudo fdisk -l` after putting the
 SD card into the slot.
 
-On MacOS you can work with `mount`, because MacOS automatically mounts the SD card, it will probably be `/dev/disk2`.
+On MacOS you can work with `diskutil list`.
 
-1. Start `fdisk` via `sudo fdisk -e /dev/XXX`.
+1. Start `fdisk` via `sudo fdisk /dev/XXX` (Linux) and `sudo gdisk /dev/XXX` (MacOS)
 2. At the fdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
    `p` to list partitions. There should be no partitions left.
 3. Type `n`, then `p` for primary, `1` for the first partition on the drive, press `ENTER` to accept the default first
