@@ -17,7 +17,7 @@ Additionally you should buy a small heatsink. [Something like that](http://www.a
 
 - A linux or mac machine with a working SD card slot
 - Linux: `tar`, `fdisk`
-- MacOS: `e2fsprogs`, `gptfdisk` brew package
+- MacOS: `e2fsprogs`, `gptfdisk`, `osxfuse`, `ext2fuse` brew packages
 
 
 ## 1. Setup the SD card
@@ -41,7 +41,9 @@ you'll destroy your linux installation! You can see which device you'll have to 
 8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/devX2` and mount it:
    `mkdir root && sudo mount /dev/devX2 root`
 
-#### 1.1.2 MacOS
+#### 1.1.2 MacOS (doesnt work yet)
+
+This solution doesnt work yet, sorry.
 
 1. Start `gdisk` via `sudo gdisk /dev/diskX`.
 2. At the gdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
@@ -50,10 +52,9 @@ you'll destroy your linux installation! You can see which device you'll have to 
 4. Enter `0700` for partition type.
 5. Type `n` again and `2` for the second partition on the drive, and then press `ENTER` twice to accept the default first and last sector. This time the partition type code is `8300`.
 6. Write the partition table and exit by typing `w`.
-7. Now create a FAT filesystem: `mkfs.vfat /dev/diskXs1` and mount the new boot partition via
-   `mkdir boot && sudo mount /dev/diskXs1 boot`
-8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/diskXs2` and mount it:
-   `mkdir root && sudo mount /dev/diskXs2 root`
+7. Now create a FAT filesystem: `sudo newfs_exfat /dev/diskXs1` and mount the new boot partition via
+   `mkdir boot && sudo mount -t exfat /dev/diskXs1 boot`
+8. Also create the ext4 filesystem for the root partition: `sudo /usr/local/opt/e2fsprogs/sbin/mkfs.ext2 /dev/diskXs2` and mount it: `mkdir root && sudo mount -t ??? /dev/diskXs2 root` (doesnt work yet)
 
 
 ### 1.2. Download the image from the website
