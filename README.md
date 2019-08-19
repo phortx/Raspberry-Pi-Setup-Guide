@@ -17,62 +17,43 @@ Additionally you should buy a small heatsink. [Something like that](http://www.a
 
 - A linux or mac machine with a working SD card slot
 - Linux: `tar`, `fdisk`
-- MacOS: `gptfdisk` brew package
+- MacOS: `e2fsprogs` brew package
 
 
 ## 1. Setup the SD card
-### 1.1. Format the SD card with fdisk
+### 1.1. Format the SD card
 
-Replace `/dev/XXX` with the SD Card device. Make sure that the device is the SD card and not your harddrive, otherwise
-you'll destroy your linux installation! You can see which device you'll have to use by running `sudo fdisk -l` after putting the
-SD card into the slot.
+Replace `/dev/devX` with the SD Card device. Make sure that the device is the SD card and not your harddrive, otherwise
+you'll destroy your linux installation! You can see which device you'll have to use by running `sudo fdisk -l` after putting the SD card into the slot.
 
-On MacOS you can work with `diskutil list`.
 
-1. Start `fdisk` via `sudo fdisk /dev/XXX` (Linux) and `sudo gdisk /dev/XXX` (MacOS)
+#### 1.1.1 Linux
+
+1. Start `fdisk` via `sudo fdisk /dev/devX`.
 2. At the fdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
    `p` to list partitions. There should be no partitions left.
-3. Type `n`, then `p` for primary, `1` for the first partition on the drive, press `ENTER` to accept the default first
-   sector, then type `+100M` for the last sector.
+3. Type `n`, then `p` for primary, `1` for the first partition on the drive, press `ENTER` to accept the default first sector, then type `+100M` for the last sector.
 4. Type `t`, then `c` to set the first partition to type `W95 FAT32 (LBA)`.
-5. Type `n`, then `p` for primary, `2` for the second partition on the drive, and then press `ENTER` twice to accept
-   the default first and last sector.
+5. Type `n` again (and `p` for primary when asked for the type), `2` for the second partition on the drive, and then press `ENTER` twice to accept the default first and last sector.
 6. Write the partition table and exit by typing `w`.
-7. Now create a FAT filesystem: `mkfs.vfat /dev/XXX1` and mount the new boot partition via
-   `mkdir boot && sudo mount /dev/XXX1 boot`
-8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/XXX2` and mount it:
-   `mkdir root && sudo mount /dev/XXX2 root`
+7. Now create a FAT filesystem: `mkfs.vfat /dev/devX1` and mount the new boot partition via
+   `mkdir boot && sudo mount /dev/devX1 boot`
+8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/devX2` and mount it:
+   `mkdir root && sudo mount /dev/devX2 root`
 
+#### 1.1.2 MacOS
 
+TODO
 
 ### 1.2. Download the image from the website
 
-There are 2 major versions of Raspberry Pi now. You may find the downloads on
-[www.archlinuxarm.org](http://www.archlinuxarm.org) for the latest version of Arch Linux for Raspberry Pi both 1 and 2.
+You may find the downloads on
+[www.archlinuxarm.org](http://www.archlinuxarm.org) for the latest version of Arch Linux for Raspberry Pi.
 
-
-**For Raspberry Pi 3**
-```bash
-wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-3-latest.tar.gz
-sudo tar -xpf ArchLinuxARM-rpi-3-latest.tar.gz -C root
-sync
-```
-
-
-**For Raspberry Pi 2**
 
 ```bash
-wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
-sudo tar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
-sync
-```
-
-
-**For Raspberry Pi 1**
-
-```bash
-wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz
-sudo tar -xpf ArchLinuxARM-rpi-latest.tar.gz -C root
+wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-4-latest.tar.gz
+sudo tar -xpf ArchLinuxARM-rpi-4-latest.tar.gz -C root
 sync
 ```
 
