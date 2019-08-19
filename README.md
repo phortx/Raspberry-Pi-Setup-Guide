@@ -22,11 +22,13 @@ Additionally you should buy a small heatsink. [Something like that](http://www.a
 ## 1. Setup the SD card
 ### 1.1. Format the SD card with fdisk
 
-Replace `/dev/sdX` with the SD Card device. Make sure that the device is the SD card and not your harddrive, otherwise
+Replace `/dev/XXX` with the SD Card device. Make sure that the device is the SD card and not your harddrive, otherwise
 you'll destroy your linux installation! You can see which device you'll have to use by running `sudo fdisk -l` after putting the
 SD card into the slot.
 
-1. Start `fdisk` via `sudo fdisk /dev/sdX`.
+On MacOS you can work with `mount`, because MacOS automatically mounts the SD card, it will probably be `/dev/disk2`.
+
+1. Start `fdisk` via `sudo fdisk /dev/XXX`.
 2. At the fdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
    `p` to list partitions. There should be no partitions left.
 3. Type `n`, then `p` for primary, `1` for the first partition on the drive, press `ENTER` to accept the default first
@@ -35,10 +37,10 @@ SD card into the slot.
 5. Type `n`, then `p` for primary, `2` for the second partition on the drive, and then press `ENTER` twice to accept
    the default first and last sector.
 6. Write the partition table and exit by typing `w`.
-7. Now create a FAT filesystem: `mkfs.vfat /dev/sdX1` and mount the new boot partition via
-   `mkdir boot && sudo mount /dev/sdX1 boot`
-8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/sdX2` and mount it:
-   `mkdir root && sudo mount /dev/sdX2 root`
+7. Now create a FAT filesystem: `mkfs.vfat /dev/XXX1` and mount the new boot partition via
+   `mkdir boot && sudo mount /dev/XXX1 boot`
+8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/XXX2` and mount it:
+   `mkdir root && sudo mount /dev/XXX2 root`
 
 
 
