@@ -41,9 +41,9 @@ you'll destroy your linux installation! You can see which device you'll have to 
 8. Also create the ext4 filesystem for the root partition: `mkfs.ext4 /dev/devX2` and mount it:
    `mkdir root && sudo mount /dev/devX2 root`
 
-#### 1.1.2 MacOS (doesnt work yet)
+#### 1.1.2 MacOS
 
-This solution doesnt work yet, sorry.
+This solution doesnt work yet without [Paragon](https://www.paragon-software.com/home/extfs-mac), sorry.
 
 1. Start `gdisk` via `sudo gdisk /dev/diskX`.
 2. At the gdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
