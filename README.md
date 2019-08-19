@@ -54,7 +54,7 @@ This solution doesnt work yet without [Paragon](https://www.paragon-software.com
 6. Write the partition table and exit by typing `w`.
 7. Now create a FAT filesystem: `sudo newfs_exfat /dev/diskXs1` and mount the new boot partition via
    `mkdir boot && sudo mount -t exfat /dev/diskXs1 boot`
-8. Also create the ext4 filesystem for the root partition: `sudo /usr/local/opt/e2fsprogs/sbin/mkfs.ext2 /dev/diskXs2` and mount it: `mkdir root && sudo mount -t ??? /dev/diskXs2 root` (doesnt work yet)
+8. Also create the ext4 filesystem for the root partition: `sudo /usr/local/opt/e2fsprogs/sbin/mkfs.ext2 /dev/diskXs2` and mount it via Paragon.
 
 
 ### 1.2. Download the image from the website
