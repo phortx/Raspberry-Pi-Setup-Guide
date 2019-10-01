@@ -1,6 +1,6 @@
 # Raspberry Pi Setup Guide
 
-A really opionionated guide how to setup every version of a Raspberry Pi with Arch Linux including WiringPi, NTP, Wi-Fi, SSH,
+A really opionionated guide how to setup every version of a Raspberry Pi with Arch Linux including NTP, Wi-Fi, SSH,
 asdf, Ruby, ZSH and more.
 
 Take a look into the wiki for more interesing stuff like finding out your Raspberry Pi version.
@@ -243,6 +243,8 @@ rm -rf package-query/ package-query.tar.gz yaourt/ yaourt.tar.gz
 
 ### 4.5 vcgencmd and other vc tools
 
+These tools are RPi specific and help you to work with the hardware like settings some options or reading system stats.
+
 ```bash
 sudo vim /etc/profile
 ```
@@ -259,18 +261,6 @@ And reload it:
 
 ```bash
 source /etc/profile
-```
-
-
-### 4.6 WiringPi
-
-```bash
-sudo git clone git://git.drogon.net/wiringPi /opt/wiringpi
-cd /opt/wiringpi
-sudo ./build
-
-gpio -v
-gpio readall
 ```
 
 * The last both command should give an `ok` or something similar. If not, something may be broken.
@@ -314,9 +304,12 @@ netctl enable yourWifiSSID
 
 ## 8. ASDF
 
+asdf is awesome version manager for interpreted programming languages like nodejs, ruby, crystal and so on.
+
 ```bash
 yaourt -S asdf-vm
 ```
+
 
 ## 9. Ruby
 
