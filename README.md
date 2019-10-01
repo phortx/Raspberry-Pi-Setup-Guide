@@ -312,17 +312,16 @@ netctl start yourWifiSSID
 netctl enable yourWifiSSID
 ```
 
+## 8. ASDF
+
+```bash
+yaourt -S asdf-vm
+```
 
 ## 9. Ruby
 
 ```bash
-\curl -sSL https://get.rvm.io | sudo bash -s stable
-sudo usermod -aG rvm yourUser
-rvm reload
-rvm install ruby
-rvm list
-rvm alias create default ruby-2.3.0 # Or something else depending on what rvm list says
-gem install bundler rake
+asdf install ruby 2.6.4 # or whatever you need
 ```
 
 
