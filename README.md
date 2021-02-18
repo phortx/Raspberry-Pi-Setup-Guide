@@ -43,18 +43,22 @@ you'll destroy your linux installation! You can see which device you'll have to 
 
 #### 1.1.2 MacOS
 
-This solution doesnt work yet without [Paragon](https://www.paragon-software.com/home/extfs-mac), sorry.
+This solution doesnt work yet without downloading [Paragon](https://www.paragon-software.com/home/extfs-mac), sorry.
 
-1. Start `gdisk` via `sudo gdisk /dev/diskX`.
-2. At the gdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
-   `p` to list partitions. There should be no partitions left.
+1. Run `diskutil list` and find your SD card - It will be listed as (external, physical) and show your SD card's size.
+2. Start `gdisk` via `sudo gdisk /dev/diskX`(Replace X with your SD card location.)
+3. At the gdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type `p` to list partitions. There should be no partitions left.
 3. Type `n`, then `1` for the first partition on the drive, press `ENTER` to accept the default first sector, then type `+100M` for the last sector.
-4. Enter `0700` for partition type.
-5. Type `n` again and `2` for the second partition on the drive, and then press `ENTER` twice to accept the default first and last sector. This time the partition type code is `8300`.
+4. Enter `0700` for partition type. Output should read 'Changed type of partition to 'Microsoft basic data'
+5. Type `n` again and `2` for the second partition on the drive, and then press `ENTER` twice to accept the default first and last sector. This time the partition type code is `8300`. Output should read 'Changed type of partition to 'Linux filesystem''
 6. Write the partition table and exit by typing `w`.
-7. Now create a FAT filesystem: `sudo newfs_exfat /dev/diskXs1` and mount the new boot partition via
-   `mkdir boot && sudo mount -t exfat /dev/diskXs1 boot`
-8. Also create the ext4 filesystem for the root partition: `sudo /usr/local/opt/e2fsprogs/sbin/mkfs.ext2 /dev/diskXs2` and mount it via Paragon.
+7. Create a directory to boot from `mkdir boot`
+8. Unmount disk `diskutil unmountDisk diskX` (to avoid "Resource busy" error)
+9. Now create a FAT filesystem: `sudo newfs_exfat /dev/diskXs1` and mount the new boot partition via
+   `sudo mount -t exfat /dev/diskXs1 boot`
+8. Install e2fsprogs (unless installed) `brew install e2fsprogs` and create the ext4 filesystem for the root partition: `sudo /usr/local/opt/e2fsprogs/sbin/mkfs.ext2 /dev/diskXs2` and mount it via Paragon extFS for Mac.
+
+
 
 
 ### 1.2. Download the image from the website
@@ -65,7 +69,7 @@ You may find the downloads on
 
 ```bash
 wget http://archlinuxarm.org/os/ArchLinuxARM-rpi-4-latest.tar.gz
-sudo tar -xpf ArchLinuxARM-rpi-4-latest.tar.gz -C root
+sudo tar -xpf ArchLinuxARM-rpi-4-latest.tar.gz -C boot
 sync
 ```
 
