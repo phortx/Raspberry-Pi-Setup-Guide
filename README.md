@@ -32,7 +32,7 @@ you'll destroy your linux installation! You can see which device you'll have to 
 1. Start `fdisk` via `sudo fdisk /dev/devX`.
 2. At the fdisk prompt, delete existing partitions: Type `o`. This will clear out any partitions on the drive. Then type
    `p` to list partitions. There should be no partitions left.
-3. Type `n`, then `p` for primary, `1` for the first partition on the drive, press `ENTER` to accept the default first sector, then type `+100M` for the last sector.
+3. Type `n`, `1` for the first partition on the drive, press `ENTER` to accept the default first sector, then type `+100M` for the last sector.
 4. Type `t`, then `c` to set the first partition to type `W95 FAT32 (LBA)`.
 5. Type `n` again (and `p` for primary when asked for the type), `2` for the second partition on the drive, and then press `ENTER` twice to accept the default first and last sector.
 6. Write the partition table and exit by typing `w`.
